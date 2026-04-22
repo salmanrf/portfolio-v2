@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { AiFillGithub } from "react-icons/ai";
-import { FaFacebookSquare } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 
 import reacticon from "../assets/img/react.png";
@@ -12,6 +12,7 @@ import graphqlicon from "../assets/img/graphql.png";
 import golangicon from "../assets/img/golang.png";
 import pythonicon from "../assets/img/python.png";
 import gcpicon from "../assets/img/gcp.png";
+import awsicon from "../assets/img/aws.png";
 import mongodbicon from "../assets/img/mongodb.png";
 import postgresicon from "../assets/img/postgres.png";
 import nodejsicon from "../assets/img/nodejs.png";
@@ -142,26 +143,42 @@ function About(props: SectionProps) {
         <div className="content-section">
           <h3>Background</h3>
           <p>
-            Hi! I am Salman Rizqi Fatih, a Full-Stack Web Developer from Depok, West Java,
+            Hi! I am Salman Rizqi Fatih, a Full-Stack Engineer from Depok, West Java,
             Indonesia.
           </p>
           <p>
-            I started my self-taught Software Development journey in 2020, after having dropped out
-            of college, and landed my first job as a Full-Stack developer in late 2021.
+            I started my self-taught Software Development journey in 2020.
+            In 2019, I enrolled myself into an undergraduate program in Electronics at Jakarta State Polytechnic (PNJ),
+            the "Introduction To Programming in C", and "Digital Systems" quickly became my favorite classes.
+          </p>
+          <p>
+            However, due to financial difficulties, I had to quit the program just the next year, and decided carve my own path.
+            Early in 2020, I started teaching myself Full-stack web development. After about a year,
+            I finally landed my first job as a Full-Stack Developer in 2021.
           </p>
         </div>
         <div className="content-section">
           <h3>Education</h3>
           <div className="content-section-item">
-            <h4>Computer Engineering And Networking - </h4>
-            <h4>SMKN 1 Cibinong (2014 - 2017)</h4>
+            <h4>Indonesia Open University (2024 - Present) - Bachelor of Information Systems</h4>
+            <h4></h4>
+          </div>
+          <div className="content-section-item">
+            <h4>Self taught (2020 - 2021) - Full-Stack Web Development</h4>
+          </div>
+          <div className="content-section-item">
+            <h4>SMKN 1 Cibinong (2014 - 2017) - Computer Engineering And Networking</h4>
           </div>
         </div>
         <div className="content-section">
           <h3>Professional Experience</h3>
           <div className="content-section-item">
+            <h4>Gigradar.io - Full-Stack Engineer</h4>
+            <h4>Feb 2025 - Present</h4>
+          </div>
+          <div className="content-section-item">
             <h4>Gradient Innovation - Full-Stack Engineer</h4>
-            <h4>Apr 2023 - Present</h4>
+            <h4>Apr 2023 - Dec 2024</h4>
           </div>
           <div className="content-section-item">
             <h4>Ozip Teknologi Nusantara - Full-Stack Developer</h4>
@@ -206,19 +223,10 @@ function Skills(props: SectionProps) {
           <p>Full-Stack Web Development</p>
         </div>
         <div className="content-section-item">
-          <p>REST/GraphQL API</p>
+          <p>System Design</p>
         </div>
         <div className="content-section-item">
-          <p>Meta Platform Integration (Whatsapp & Instagram)</p>
-        </div>
-        <div className="content-section-item">
-          <p>Payment Gateway Integration</p>
-        </div>
-        <div className="content-section-item">
-          <p>Google Cloud Platform</p>
-        </div>
-        <div className="content-section-item">
-          <p>Chrome Extension Development</p>
+          <p>AI Applications Development</p>
         </div>
         <div id="techstack">
           <p>Some of the technologies i've used: </p>
@@ -230,8 +238,28 @@ function Skills(props: SectionProps) {
                   <span>TypeScript</span>
                 </li>
                 <li className="stack-item">
+                  <img src={golangicon} alt="tech-icon" />
+                  <span>Go</span>
+                </li>
+                <li className="stack-item">
+                  <img src={pythonicon} alt="tech-icon" />
+                  <span>Python</span>
+                </li>
+                <li className="stack-item">
+                  <img src={nodejsicon} alt="tech-icon" />
+                  <span>NodeJS</span>
+                </li>
+                <li className="stack-item">
                   <img src={jesticon} alt="tech-icon" />
                   <span>Jest</span>
+                </li>
+              </ul>
+            </div>
+            <div className="stack">
+              <ul>
+                <li className="stack-item">
+                  <img src={nestjsicon} alt="tech-icon" />
+                  <span>NestJS</span>
                 </li>
                 <li className="stack-item">
                   <img src={reacticon} alt="tech-icon" />
@@ -254,20 +282,8 @@ function Skills(props: SectionProps) {
                   <span>Google Cloud Platform</span>
                 </li>
                 <li className="stack-item">
-                  <img src={nodejsicon} alt="tech-icon" />
-                  <span>NodeJS</span>
-                </li>
-                <li className="stack-item">
-                  <img src={nestjsicon} alt="tech-icon" />
-                  <span>NestJS</span>
-                </li>
-                <li className="stack-item">
-                  <img src={golangicon} alt="tech-icon" />
-                  <span>Go</span>
-                </li>
-                <li className="stack-item">
-                  <img src={pythonicon} alt="tech-icon" />
-                  <span>Python</span>
+                  <img src={awsicon} alt="tech-icon" />
+                  <span>AWS</span>
                 </li>
               </ul>
             </div>
@@ -329,9 +345,9 @@ function Contacts() {
         <HiOutlineMail />
         <span>salmanrf2@gmail.com</span>
       </a>
-      <a href="https://www.facebook.com/salmanrfsrf/" target="_blank" className="contact-item">
-        <FaFacebookSquare />
-        <span>salmanrfsrf</span>
+      <a href="https://www.linkedin.com/in/salman-r-123320128/" target="_blank" className="contact-item">
+        <FaLinkedin />
+        <span>Salman RF</span>
       </a>
     </div>
   );
