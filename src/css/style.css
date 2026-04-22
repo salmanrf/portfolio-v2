@@ -140,7 +140,9 @@ header {
   padding: 0 18px;
   padding-top: 60px;
   transform: translateY(25%);
-  transition: transform 250ms ease-in-out, opacity 250ms ease-in-out;
+  transition:
+    transform 250ms ease-in-out,
+    opacity 250ms ease-in-out;
   opacity: 0;
 }
 
@@ -263,7 +265,9 @@ header {
   color: var(--slightly-transparent);
   transform: translateY(25%);
   opacity: 0;
-  transition: transform 250ms ease-in-out, opacity 250ms ease-in-out;
+  transition:
+    transform 250ms ease-in-out,
+    opacity 250ms ease-in-out;
   background: var(--section-container);
 }
 
@@ -418,7 +422,9 @@ header {
   display: flex;
   flex-direction: column;
   padding: 30px 18px;
-  transition: top 500ms ease-in-out, opacity 500ms ease-in-out;
+  transition:
+    top 500ms ease-in-out,
+    opacity 500ms ease-in-out;
 }
 
 #page-title {
@@ -624,5 +630,7 @@ header {
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0;
-  transition: top 250ms ease-in-out, opacity 250ms ease-in-out;
+  transition:
+    top 250ms ease-in-out,
+    opacity 250ms ease-in-out;
 }

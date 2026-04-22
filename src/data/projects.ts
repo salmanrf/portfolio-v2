@@ -2,6 +2,7 @@ import hevyassistantPreview from "../assets/img/hevy-assistant.gif"
 import odinbookPreview from "../assets/img/odin.gif";
 import steamclonePreview from "../assets/img/steamclone.gif";
 import finedealPreview from "../assets/img/finedeal.gif";
+import capybaraPreview from "../assets/img/coming-soon.png";
 
 export type ProjectData = {
   year: number
@@ -20,6 +21,31 @@ export type ProjectDetails = {
 
 export const projectData: ProjectData = [
   {
+    year: 2025,
+    projects: [
+      {
+        title: "Capybara Cloud",
+        description: `Capybara Cloud is an open source, self-hosted, "Bring your own cloud", AI-assistend Platform as a Service (PaaS) engine.`,
+        previewImage: capybaraPreview,
+        liveLink: null,
+        sourceLink: "https://github.com/salmanrf/capybara_cloud",
+        features: [
+          "Cloud Space Management",
+          "Deployment Management",
+          "Deployment Monitoring",
+          "Hosts Provisioning",
+          "AI Assist (MCP)"
+        ],
+        technologies: [
+          "Go",
+          "TypeScript",
+          "NodeJS",
+          "PostgreSQL",
+        ],
+      }
+    ]
+  },
+  {
     year: 2024,
     projects: [
       {
@@ -27,7 +53,7 @@ export const projectData: ProjectData = [
         description: `An unoffical AI powered assistant for Hevy, Designed to help Weightlifters with program review,
 exercise progressions, and general advice.
 This project consists of two services: The chat interface, which is a chrome extension injected to the
-Hevy website, and a Back- End service.`,
+Hevy website, and a Back-end service.`,
         previewImage: hevyassistantPreview,
         liveLink: null,
         sourceLink: "https://github.com/salmanrf/hevy-assistant",
