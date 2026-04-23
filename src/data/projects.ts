@@ -1,8 +1,8 @@
 import hevyassistantPreview from "../assets/img/hevy-assistant.gif"
-import odinbookPreview from "../assets/img/odin.gif";
-import steamclonePreview from "../assets/img/steamclone.gif";
-import finedealPreview from "../assets/img/finedeal.gif";
-import capybaraPreview from "../assets/img/coming-soon.png";
+// import odinbookPreview from "../assets/img/odin.gif";
+// import steamclonePreview from "../assets/img/steamclone.gif";
+// import finedealPreview from "../assets/img/finedeal.gif";
+import capybaraPreview from "../assets/img/capy-system-design.png";
 
 export type ProjectData = {
   year: number
@@ -12,7 +12,7 @@ export type ProjectData = {
 export type ProjectDetails = {
   title: string
   description: string
-  previewImage: string
+  previewImage?: string
   liveLink?: string | null
   sourceLink: string,
   features: string[],
@@ -25,7 +25,7 @@ export const projectData: ProjectData = [
     projects: [
       {
         title: "Capybara Cloud",
-        description: `Capybara Cloud is an open source, self-hosted, "Bring your own cloud", AI-assistend Platform as a Service (PaaS) engine.`,
+        description: `Capybara Cloud is an open source, self-hosted, "Bring your own cloud", AI-assisted Platform as a Service (PaaS) engine.`,
         previewImage: capybaraPreview,
         liveLink: null,
         sourceLink: "https://github.com/salmanrf/capybara_cloud",
@@ -41,6 +41,11 @@ export const projectData: ProjectData = [
           "TypeScript",
           "NodeJS",
           "PostgreSQL",
+          "RabbitMQ",
+          "Auth0",
+          "chi",
+          "goose",
+          "sqlc",
         ],
       }
     ]
@@ -79,75 +84,76 @@ Hevy website, and a Back-end service.`,
   },
   {
     year: 2021,
-    projects: [
-      {
-        title: "Fin(d)e Deal",
-        description: "An application leveraging web scraping to find game sales and comparing price between stores.",
-        previewImage: finedealPreview,
-        liveLink: "https://finedeal.netlify.app/",
-        sourceLink: "https://github.com/salmanrf/fin-d-e_deal",
-        features: [
-          "Wishlist Highlights",
-          "Highlight sales from steam, gog and humble-bundle",
-          "Paginate sales list from steam, gog and humble-bundle",
-          "Add/remove wishlist",
-          "Authentication",
-          "Compare game prices between stores",
-          "Search games",
-        ],
-        technologies: [
-          "MongoDB",
-          "Express",
-          "React",
-          "Zustand",
-          "Sass",
-          "Redis",
-          "NodeJS",
-          "react-router-dom",
-          "jsonwebtoken",
-          "cheerio",
-        ],
-      },
-      {
-        title: "OdinBook",
-        description: "Fullstack MERN Social Media application",
-        previewImage: odinbookPreview,
-        liveLink: "https://odin-book.netlify.app/",
-        sourceLink: "https://github.com/salmanrf/odin-book",
-        features: [
-          "Authentication",
-          "User Settings",
-          "CRUD posts",
-          "CRUD comments",
-          "CRUD post reactions",
-          "CRUD friends",
-          "Search user and post",
-        ],
-        technologies: [
-          "MongoDB",
-          "Mongoose",
-          "Express",
-          "React",
-          "react-router-dom",
-          "jsonwebtoken",
-          "NodeJS",
-        ],
-      },
-      {
-        title: "Steam Clone (CRUD)",
-        description: "A simplified clone of steam.",
-        previewImage: steamclonePreview,
-        liveLink: "https://steam-crud.herokuapp.com/",
-        sourceLink: "https://github.com/salmanrf/steam-clone",
-        features: [
-          "Authentication",
-          "Dashboard (Admin)",
-          "CRUD games (Admin)",
-          "Browse games by genres/developers/publishers",
-          "Create and read forum post",
-        ],
-        technologies: ["MongoDB", "Mongoose", "Express", "HTML", "CSS", "Pug", "PassportJS", "NodeJS"],
-      },
-    ]
+    projects: [],
+    // projects: [
+    //   {
+    //     title: "Fin(d)e Deal",
+    //     description: "An application leveraging web scraping to find game sales and comparing price between stores.",
+    //     previewImage: finedealPreview,
+    //     liveLink: "https://finedeal.netlify.app/",
+    //     sourceLink: "https://github.com/salmanrf/fin-d-e_deal",
+    //     features: [
+    //       "Wishlist Highlights",
+    //       "Highlight sales from steam, gog and humble-bundle",
+    //       "Paginate sales list from steam, gog and humble-bundle",
+    //       "Add/remove wishlist",
+    //       "Authentication",
+    //       "Compare game prices between stores",
+    //       "Search games",
+    //     ],
+    //     technologies: [
+    //       "MongoDB",
+    //       "Express",
+    //       "React",
+    //       "Zustand",
+    //       "Sass",
+    //       "Redis",
+    //       "NodeJS",
+    //       "react-router-dom",
+    //       "jsonwebtoken",
+    //       "cheerio",
+    //     ],
+    //   },
+    //   {
+    //     title: "OdinBook",
+    //     description: "Fullstack MERN Social Media application",
+    //     previewImage: odinbookPreview,
+    //     liveLink: "https://odin-book.netlify.app/",
+    //     sourceLink: "https://github.com/salmanrf/odin-book",
+    //     features: [
+    //       "Authentication",
+    //       "User Settings",
+    //       "CRUD posts",
+    //       "CRUD comments",
+    //       "CRUD post reactions",
+    //       "CRUD friends",
+    //       "Search user and post",
+    //     ],
+    //     technologies: [
+    //       "MongoDB",
+    //       "Mongoose",
+    //       "Express",
+    //       "React",
+    //       "react-router-dom",
+    //       "jsonwebtoken",
+    //       "NodeJS",
+    //     ],
+    //   },
+    //   {
+    //     title: "Steam Clone (CRUD)",
+    //     description: "A simplified clone of steam.",
+    //     previewImage: steamclonePreview,
+    //     liveLink: "https://steam-crud.herokuapp.com/",
+    //     sourceLink: "https://github.com/salmanrf/steam-clone",
+    //     features: [
+    //       "Authentication",
+    //       "Dashboard (Admin)",
+    //       "CRUD games (Admin)",
+    //       "Browse games by genres/developers/publishers",
+    //       "Create and read forum post",
+    //     ],
+    //     technologies: ["MongoDB", "Mongoose", "Express", "HTML", "CSS", "Pug", "PassportJS", "NodeJS"],
+    //   },
+    // ]
   }
 ]

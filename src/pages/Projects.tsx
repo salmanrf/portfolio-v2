@@ -29,9 +29,24 @@ function Projects() {
         {projectData.map(({ year, projects }) => (
           <>
             <div className="projects-year-separator">{year}</div>
-            {projects.map((project) => (
-              <ProjectContainer key={project.title} project={project} />
-            ))}
+            {projects.length > 0 ?
+              projects.map((project) => (
+                <ProjectContainer key={project.title} project={project} />
+              ))
+              :
+              <>
+                <a
+                  href="https://github.com/salmanrf"
+                  target="_blank"
+                  className="projects-year-separator"
+                  style={{ width: 'auto', marginBottom: "48px" }}
+                >
+                  Click here for more.
+                </a>
+                <a className="projects-year-separator" style={{ width: 'auto', marginBottom: "48px", opacity: 0 }}></a>
+              </>
+
+            }
           </>
         ))}
       </div>
@@ -46,7 +61,9 @@ function ProjectContainer(props: { project: ProjectDetails }) {
   return (
     <div className="project-container">
       <div className="project-preview">
-        <img src={project.previewImage} alt="" />
+        {project.previewImage &&
+          <img src={project.previewImage} alt="" />
+        }
         <div className="project-links-flex">
           {project.liveLink && (
             <a className="project-link" href={project.liveLink} target="_blank">

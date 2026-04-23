@@ -3,21 +3,6 @@ import { AiFillGithub } from "react-icons/ai";
 import { FaLinkedin } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
 
-import reacticon from "../assets/img/react.png";
-import nextjsicon from "../assets/img/nextjs.png";
-import nestjsicon from "../assets/img/nestjs.svg";
-import jesticon from "../assets/img/jest.png";
-import typescripticon from "../assets/img/typescript.png";
-import graphqlicon from "../assets/img/graphql.png";
-import golangicon from "../assets/img/golang.png";
-import pythonicon from "../assets/img/python.png";
-import gcpicon from "../assets/img/gcp.png";
-import awsicon from "../assets/img/aws.png";
-import mongodbicon from "../assets/img/mongodb.png";
-import postgresicon from "../assets/img/postgres.png";
-import nodejsicon from "../assets/img/nodejs.png";
-import redisicon from "../assets/img/redis.png";
-
 type SectionProps = {
   section: {
     current: number;
@@ -127,6 +112,8 @@ function About(props: SectionProps) {
     }, 100);
   }, []);
 
+  const yoe = ((Date.now() - new Date("2021-09-21").getTime()) / (60_000 * 60 * 24 * 365)).toFixed(1);
+
   return (
     <div
       className="home-section-container"
@@ -143,18 +130,20 @@ function About(props: SectionProps) {
         <div className="content-section">
           <h3>Background</h3>
           <p>
-            Hi! I am Salman Rizqi Fatih, a Full-Stack Engineer from Depok, West Java,
-            Indonesia.
+            Hi! I am Salman Rizqi Fatih, a Full-Stack Engineer with {yoe} years of experience from Depok, West Java, Indonesia.
           </p>
           <p>
-            I started my self-taught Software Development journey in 2020.
-            In 2019, I enrolled myself into an undergraduate program in Electronics at Jakarta State Polytechnic (PNJ),
-            the "Introduction To Programming in C", and "Digital Systems" quickly became my favorite classes.
+            In 2019, I enrolled in an undergraduate program in Electronics at Jakarta State Polytechnic (PNJ).
+            The "Introduction to Programming in C" and "Digital Systems" courses quickly became my favorite classes.
           </p>
           <p>
-            However, due to financial difficulties, I had to quit the program just the next year, and decided carve my own path.
-            Early in 2020, I started teaching myself Full-stack web development. After about a year,
-            I finally landed my first job as a Full-Stack Developer in 2021.
+            However, due to financial difficulties, I had to quit the program the following year and decided to carve my own path.
+            Early in 2020, I started teaching myself Full-stack web development.
+            After about a year of building my skills and portfolio, I finally landed my first job as a Full-Stack Developer in 2021.
+          </p>
+          <p>
+            Nowadays, I work as a Full-stack Engineer, with a growing focus on Back-end engineering, low-level systems, and software architecture.
+            In late 2024, I decided to take another chance on formal education, and enroll to Bachelor in "Information Systems".
           </p>
         </div>
         <div className="content-section">
@@ -220,91 +209,50 @@ function Skills(props: SectionProps) {
       <div className="home-section-content">
         <h2>Skills</h2>
         <div className="content-section-item">
-          <p>Full-Stack Web Development</p>
+          <p>Software Architecture</p>
         </div>
+        <ul>
+          <li>System Design</li>
+          <li>Small to medium scale Distributed Systems</li>
+        </ul>
         <div className="content-section-item">
-          <p>System Design</p>
+          <p>Engineering Practices</p>
         </div>
+        <ul>
+          <li>Test Driven Development</li>
+        </ul>
+        <div className="content-section-item">
+          <p>Back-end Development</p>
+        </div>
+        <ul>
+          <li>Programming Languages: TypeScript, Go, Python, C</li>
+          <li>Environment/Framework: NodeJS</li>
+          <li>Database: MongoDB, PostgreSQL, ElasticSearch</li>
+          <li>API Design: REST API, GraphQL</li>
+        </ul>
+        <div className="content-section-item">
+          <p>Infrastructure</p>
+        </div>
+        <ul>
+          <li>Platform: AWS, GCP</li>
+          <li>Containerization: Docker</li>
+          <li>Web Server: Nginx</li>
+        </ul>
         <div className="content-section-item">
           <p>AI Applications Development</p>
         </div>
-        <div id="techstack">
-          <p>Some of the technologies i've used: </p>
-          <div id="techstack-container">
-            <div className="stack">
-              <ul>
-                <li className="stack-item">
-                  <img src={typescripticon} alt="tech-icon" />
-                  <span>TypeScript</span>
-                </li>
-                <li className="stack-item">
-                  <img src={golangicon} alt="tech-icon" />
-                  <span>Go</span>
-                </li>
-                <li className="stack-item">
-                  <img src={pythonicon} alt="tech-icon" />
-                  <span>Python</span>
-                </li>
-                <li className="stack-item">
-                  <img src={nodejsicon} alt="tech-icon" />
-                  <span>NodeJS</span>
-                </li>
-                <li className="stack-item">
-                  <img src={jesticon} alt="tech-icon" />
-                  <span>Jest</span>
-                </li>
-              </ul>
-            </div>
-            <div className="stack">
-              <ul>
-                <li className="stack-item">
-                  <img src={nestjsicon} alt="tech-icon" />
-                  <span>NestJS</span>
-                </li>
-                <li className="stack-item">
-                  <img src={reacticon} alt="tech-icon" />
-                  <span>React</span>
-                </li>
-                <li className="stack-item">
-                  <img src={nextjsicon} alt="tech-icon" />
-                  <span>NextJs</span>
-                </li>
-                <li className="stack-item">
-                  <img src={graphqlicon} alt="tech-icon" />
-                  <span>GraphQL</span>
-                </li>
-              </ul>
-            </div>
-            <div className="stack">
-              <ul>
-                <li className="stack-item">
-                  <img src={gcpicon} alt="tech-icon" />
-                  <span>Google Cloud Platform</span>
-                </li>
-                <li className="stack-item">
-                  <img src={awsicon} alt="tech-icon" />
-                  <span>AWS</span>
-                </li>
-              </ul>
-            </div>
-            <div className="stack">
-              <ul>
-                <li className="stack-item">
-                  <img src={postgresicon} alt="tech-icon" />
-                  <span>PostgresSQL</span>
-                </li>
-                <li className="stack-item">
-                  <img src={mongodbicon} alt="tech-icon" />
-                  <span>MongoDB</span>
-                </li>
-                <li className="stack-item">
-                  <img src={redisicon} alt="tech-icon" />
-                  <span>Redis</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+        <ul>
+          <li>Libraries: LangChain, LangGraph</li>
+          <li>MCP Development</li>
+        </ul>
+        <div className="content-section-item">
+          <p>Front-end Development</p>
         </div>
+        <ul>
+          <li>Programming Languages: TypeScript, JavaScript</li>
+          <li>Libraries/Framework: React, NextJS, Plasmo Framework</li>
+          <li>State Management: Redux, Zustand</li>
+        </ul>
       </div>
     </div>
   );
