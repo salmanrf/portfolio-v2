@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { FaLinkedin } from "react-icons/fa";
-import { HiOutlineMail } from "react-icons/hi";
+import { HiOutlineMail, HiOutlineDocumentDownload } from "react-icons/hi";
 
 type SectionProps = {
   section: {
@@ -213,7 +213,7 @@ function Skills(props: SectionProps) {
         </div>
         <ul>
           <li>System Design</li>
-          <li>Small to medium scale Distributed Systems</li>
+          <li>Distributed Systems</li>
         </ul>
         <div className="content-section-item">
           <p>Engineering Practices</p>
@@ -244,6 +244,7 @@ function Skills(props: SectionProps) {
         <ul>
           <li>Libraries: LangChain, LangGraph</li>
           <li>MCP Development</li>
+          <li>LLM Observability: Langfuse</li>
         </ul>
         <div className="content-section-item">
           <p>Front-end Development</p>
@@ -296,6 +297,14 @@ function Contacts() {
       <a href="https://www.linkedin.com/in/salman-r-123320128/" target="_blank" className="contact-item">
         <FaLinkedin />
         <span>Salman RF</span>
+      </a>
+      <a
+        href="/salman-rizqi-fatih-resume.pdf"
+        download="salman-rizqi-fatih-resume.pdf"
+        className="contact-item"
+      >
+        <HiOutlineDocumentDownload />
+        <span>Resume</span>
       </a>
     </div>
   );
