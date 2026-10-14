@@ -213,7 +213,7 @@ function Skills(props: SectionProps) {
         </div>
         <ul>
           <li>System Design</li>
-          <li>Small to medium scale Distributed Systems</li>
+          <li>Distributed Systems</li>
         </ul>
         <div className="content-section-item">
           <p>Engineering Practices</p>
