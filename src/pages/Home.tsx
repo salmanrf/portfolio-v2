@@ -260,7 +260,57 @@ function Skills(props: SectionProps) {
 }
 
 // ========= Home Main Sub-Components =========
+const TITLE = "Full-Stack Engineer";
+const ALT_TITLE = "Aspiring Linux Kernel Engineer";
+
+const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+const randomBetween = (min: number, max: number) => min + Math.random() * (max - min);
+
+// Every so often, backspaces the title, types ALT_TITLE, then quickly reverts to TITLE.
+function useTitleSwap() {
+  const [title, setTitle] = useState(TITLE);
+  const [isTyping, setIsTyping] = useState(false);
+
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let cancelled = false;
+
+    const retype = async (from: string, to: string) => {
+      for (let i = from.length - 1; i >= 0 && !cancelled; i--) {
+        setTitle(from.slice(0, i));
+        await wait(35);
+      }
+      for (let i = 1; i <= to.length && !cancelled; i++) {
+        setTitle(to.slice(0, i));
+        await wait(randomBetween(50, 110));
+      }
+    };
+
+    (async () => {
+      while (!cancelled) {
+        await wait(randomBetween(6000, 15000));
+        if (cancelled) return;
+        if (document.hidden) continue;
+        setIsTyping(true);
+        await retype(TITLE, ALT_TITLE);
+        await wait(1200);
+        await retype(ALT_TITLE, TITLE);
+        if (!cancelled) setIsTyping(false);
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  return { title, isTyping };
+}
+
 const Greetings = () => {
+  const { title, isTyping } = useTitleSwap();
+
   return (
     <div id="greetings">
       <div id="welcome">
@@ -271,8 +321,18 @@ const Greetings = () => {
         <h1>Salman Rizqi Fatih</h1>
       </div>
       <div className="greeting-line">
-        <h2>a</h2>
-        <h1>Fullstack Developer</h1>
+        <h2>{/^[aeiou]/i.test(title) ? "an" : "a"}</h2>
+        {/* The hidden copy of the longest title reserves its space, so the hero doesn't shift while typing. */}
+        <h1 className="title-swap">
+          <span className="title-swap-ghost" aria-hidden="true">
+            {ALT_TITLE}
+            <span className="title-cursor" />
+          </span>
+          <span>
+            {title}
+            {isTyping && <span className="title-cursor" />}
+          </span>
+        </h1>
       </div>
     </div>
   );

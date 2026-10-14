@@ -224,6 +224,31 @@ header {
   font-size: 26px;
 }
 
+.greeting-line h2 {
+  flex-shrink: 0;
+}
+
+.title-swap {
+  display: grid;
+}
+
+.title-swap > span {
+  grid-area: 1 / 1;
+}
+
+.title-swap-ghost {
+  visibility: hidden;
+}
+
+.title-cursor {
+  display: inline-block;
+  width: 0.5em;
+  height: 1em;
+  margin-left: 4px;
+  vertical-align: text-bottom;
+  background: var(--primary-blue);
+}
+
 #contacts {
   margin-top: 20px;
   display: flex;
