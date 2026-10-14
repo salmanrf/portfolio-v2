@@ -322,13 +322,13 @@ const Greetings = () => {
       </div>
       <div className="greeting-line">
         <h2>{/^[aeiou]/i.test(title) ? "an" : "a"}</h2>
-        {/* The hidden copy of the longest title reserves its space, so the hero doesn't shift while typing. */}
+        {/* The hidden copy of TITLE fixes the width, so the hero doesn't shift sideways and ALT_TITLE wraps instead. */}
         <h1 className="title-swap">
           <span className="title-swap-ghost" aria-hidden="true">
-            {ALT_TITLE}
+            {TITLE}
             <span className="title-cursor" />
           </span>
-          <span>
+          <span className="title-swap-text">
             {title}
             {isTyping && <span className="title-cursor" />}
           </span>

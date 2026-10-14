@@ -240,6 +240,12 @@ header {
   visibility: hidden;
 }
 
+/* Fill the ghost's width without widening it, so longer text wraps. */
+.title-swap-text {
+  width: 0;
+  min-width: 100%;
+}
+
 .title-cursor {
   display: inline-block;
   width: 0.5em;
