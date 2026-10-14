@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { AiFillGithub } from "react-icons/ai";
 import { FaLinkedin } from "react-icons/fa";
-import { HiOutlineMail } from "react-icons/hi";
+import { HiOutlineMail, HiOutlineDocumentDownload } from "react-icons/hi";
 
 type SectionProps = {
   section: {
@@ -296,6 +296,14 @@ function Contacts() {
       <a href="https://www.linkedin.com/in/salman-r-123320128/" target="_blank" className="contact-item">
         <FaLinkedin />
         <span>Salman RF</span>
+      </a>
+      <a
+        href="/salman-rizqi-fatih-resume.pdf"
+        download="salman-rizqi-fatih-resume.pdf"
+        className="contact-item"
+      >
+        <HiOutlineDocumentDownload />
+        <span>Resume</span>
       </a>
     </div>
   );
