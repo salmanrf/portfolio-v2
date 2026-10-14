@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Route, NavLink, Routes, Outlet, BrowserRouter } from "react-router-dom";
 import { BlogPage, Home, Projects } from "./pages";
+import FractalBackground from "./components/FractalBackground";
 
 function Layout() {
   const [showNav, setShowNav] = useState(false);
 
   return (
     <div className="App">
+      <FractalBackground />
       <header>
         <div className="hamburger-menu" onClick={() => setShowNav(!showNav)}>
           <div></div>
