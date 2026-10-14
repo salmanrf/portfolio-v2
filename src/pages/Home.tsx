@@ -270,6 +270,7 @@ const randomBetween = (min: number, max: number) => min + Math.random() * (max -
 function useTitleSwap() {
   const [title, setTitle] = useState(TITLE);
   const [isTyping, setIsTyping] = useState(false);
+  const [isAlt, setIsAlt] = useState(false);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -281,6 +282,7 @@ function useTitleSwap() {
         setTitle(from.slice(0, i));
         await wait(35);
       }
+      if (!cancelled) setIsAlt(to === ALT_TITLE);
       for (let i = 1; i <= to.length && !cancelled; i++) {
         setTitle(to.slice(0, i));
         await wait(randomBetween(50, 110));
@@ -305,11 +307,11 @@ function useTitleSwap() {
     };
   }, []);
 
-  return { title, isTyping };
+  return { title, isTyping, isAlt };
 }
 
 const Greetings = () => {
-  const { title, isTyping } = useTitleSwap();
+  const { title, isTyping, isAlt } = useTitleSwap();
 
   return (
     <div id="greetings">
@@ -322,15 +324,16 @@ const Greetings = () => {
       </div>
       <div className="greeting-line">
         <h2>{/^[aeiou]/i.test(title) ? "an" : "a"}</h2>
-        {/* The hidden copy of TITLE fixes the width, so the hero doesn't shift sideways and ALT_TITLE wraps instead. */}
+        {/* The hidden copy of TITLE fixes the hero's size; ALT_TITLE is typed smaller to fit inside it. */}
         <h1 className="title-swap">
           <span className="title-swap-ghost" aria-hidden="true">
             {TITLE}
-            <span className="title-cursor" />
           </span>
           <span className="title-swap-text">
-            {title}
-            {isTyping && <span className="title-cursor" />}
+            <span className={isAlt ? "title-swap-alt" : undefined}>
+              {title}
+              {isTyping && <span className="title-cursor" />}
+            </span>
           </span>
         </h1>
       </div>
