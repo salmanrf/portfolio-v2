@@ -244,6 +244,7 @@ function Skills(props: SectionProps) {
         <ul>
           <li>Libraries: LangChain, LangGraph</li>
           <li>MCP Development</li>
+          <li>LLM Observability: Langfuse</li>
         </ul>
         <div className="content-section-item">
           <p>Front-end Development</p>
