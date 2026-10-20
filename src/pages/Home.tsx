@@ -261,7 +261,7 @@ function Skills(props: SectionProps) {
 
 // ========= Home Main Sub-Components =========
 const TITLE = "Full-Stack Engineer";
-const ALT_TITLE = "Aspiring Linux Kernel Engineer";
+const ALT_TITLE = "???????? ????? ?????? Engineer";
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const randomBetween = (min: number, max: number) => min + Math.random() * (max - min);
