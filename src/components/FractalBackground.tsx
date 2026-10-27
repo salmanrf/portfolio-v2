@@ -13,6 +13,15 @@ type Fractal = {
   fadeMs: number;
 };
 
+// Small cat emojis drift down from the top of the page, spinning slowly.
+type Cat = { glyph: string; x: number; y: number; size: number; vy: number; drift: number; angle: number; spin: number };
+
+const CAT_EMOJIS = ["🐱", "😺", "😸", "😹", "😻", "😼", "😽", "🙀", "😿", "😾", "🐈", "🐈‍⬛"];
+const MAX_CATS = 6;
+const MIN_CAT_SPAWN_MS = 2000;
+const MAX_CAT_SPAWN_MS = 6000;
+const CAT_ALPHA = 0.7;
+
 const MAX_ACTIVE = 4;
 const MIN_SPAWN_MS = 1500;
 const MAX_SPAWN_MS = 4500;
@@ -102,11 +111,20 @@ function sierpinski(cx: number, cy: number, size: number): Segment[] {
   return segments;
 }
 
-const GENERATORS = [tree, koch, sierpinski];
+const GENERATORS = { tree, koch, sierpinski };
+type GeneratorName = keyof typeof GENERATORS;
+const GENERATOR_NAMES = Object.keys(GENERATORS) as GeneratorName[];
+
+// `?shape=tree` (or koch, sierpinski) forces one fractal kind, handy when tweaking a drawing.
+function pickGenerator() {
+  const forced = new URLSearchParams(window.location.search).get("shape") as GeneratorName | null;
+  if (forced && forced in GENERATORS) return GENERATORS[forced];
+  return GENERATORS[GENERATOR_NAMES[Math.floor(Math.random() * GENERATOR_NAMES.length)]];
+}
 
 function spawn(width: number, height: number, now: number): Fractal {
   const size = Math.min(width, height) * rand(0.12, 0.25);
-  const generate = GENERATORS[Math.floor(Math.random() * GENERATORS.length)];
+  const generate = pickGenerator();
 
   return {
     segments: generate(rand(size, width - size), rand(size, height - size), size),
@@ -117,6 +135,38 @@ function spawn(width: number, height: number, now: number): Fractal {
     holdMs: 1500,
     fadeMs: 2000,
   };
+}
+
+function spawnCat(width: number): Cat {
+  const size = rand(14, 20);
+  return {
+    glyph: CAT_EMOJIS[Math.floor(Math.random() * CAT_EMOJIS.length)],
+    x: rand(size, width - size),
+    y: -size,
+    size,
+    vy: rand(18, 34), // px per second
+    drift: rand(-6, 6), // px per second sideways
+    angle: rand(0, Math.PI * 2),
+    spin: rand(0.25, 0.6) * (Math.random() < 0.5 ? -1 : 1), // radians per second
+  };
+}
+
+function stepCat(cat: Cat, dtSeconds: number) {
+  cat.y += cat.vy * dtSeconds;
+  cat.x += cat.drift * dtSeconds;
+  cat.angle += cat.spin * dtSeconds;
+}
+
+function drawCat(ctx: CanvasRenderingContext2D, cat: Cat) {
+  ctx.save();
+  ctx.globalAlpha = CAT_ALPHA;
+  ctx.translate(cat.x, cat.y);
+  ctx.rotate(cat.angle);
+  ctx.font = `${cat.size}px "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif`;
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(cat.glyph, 0, 0);
+  ctx.restore();
 }
 
 function draw(ctx: CanvasRenderingContext2D, fractal: Fractal, now: number) {
@@ -148,8 +198,11 @@ function FractalBackground() {
     if (!canvas || !ctx) return;
 
     let fractals: Fractal[] = [];
+    let cats: Cat[] = [];
     let frame = 0;
     let spawnTimer = 0;
+    let catTimer = 0;
+    let lastFrame = performance.now();
 
     const resize = () => {
       const dpr = window.devicePixelRatio || 1;
@@ -168,21 +221,41 @@ function FractalBackground() {
       }, rand(MIN_SPAWN_MS, MAX_SPAWN_MS));
     };
 
+    const scheduleCat = () => {
+      catTimer = window.setTimeout(() => {
+        if (!document.hidden && cats.length < MAX_CATS) {
+          cats.push(spawnCat(window.innerWidth));
+        }
+        scheduleCat();
+      }, rand(MIN_CAT_SPAWN_MS, MAX_CAT_SPAWN_MS));
+    };
+
     const render = (now: number) => {
+      // Cap the step so a backgrounded tab doesn't teleport cats when it wakes.
+      const dt = Math.min((now - lastFrame) / 1000, 0.1);
+      lastFrame = now;
+
       ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
       fractals = fractals.filter((f) => now - f.born < f.growMs + f.holdMs + f.fadeMs);
       for (const f of fractals) draw(ctx, f, now);
+
+      for (const c of cats) stepCat(c, dt);
+      cats = cats.filter((c) => c.y < window.innerHeight + c.size);
+      for (const c of cats) drawCat(ctx, c);
+
       frame = requestAnimationFrame(render);
     };
 
     resize();
     window.addEventListener("resize", resize);
     scheduleSpawn();
+    scheduleCat();
     frame = requestAnimationFrame(render);
 
     return () => {
       window.removeEventListener("resize", resize);
       window.clearTimeout(spawnTimer);
+      window.clearTimeout(catTimer);
       cancelAnimationFrame(frame);
     };
   }, []);
