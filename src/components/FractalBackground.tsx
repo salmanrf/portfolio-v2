@@ -6,6 +6,8 @@ type Segment = { x1: number; y1: number; x2: number; y2: number; order: number }
 
 type Fractal = {
   segments: Segment[];
+  // Set for emoji shapes: drawn with fillText instead of segments.
+  emoji?: { glyph: string; x: number; y: number; size: number; tilt: number };
   hue: number;
   born: number;
   growMs: number;
@@ -102,18 +104,47 @@ function sierpinski(cx: number, cy: number, size: number): Segment[] {
   return segments;
 }
 
-const GENERATORS = [tree, koch, sierpinski];
+const CAT_EMOJIS = ["🐱", "😺", "😸", "😹", "😻", "😼", "😽", "🙀", "😿", "😾", "🐈", "🐈‍⬛"];
+
+// Emoji cats carry no segments; `spawn` fills in the `emoji` field instead.
+function cat(): Segment[] {
+  return [];
+}
+
+const GENERATORS = { tree, koch, sierpinski, cat };
+type GeneratorName = keyof typeof GENERATORS;
+const GENERATOR_NAMES = Object.keys(GENERATORS) as GeneratorName[];
+
+// `?shape=cat` (or tree, koch, sierpinski) forces one shape, handy when tweaking a drawing.
+function pickGenerator() {
+  const forced = new URLSearchParams(window.location.search).get("shape") as GeneratorName | null;
+  if (forced && forced in GENERATORS) return GENERATORS[forced];
+  return GENERATORS[GENERATOR_NAMES[Math.floor(Math.random() * GENERATOR_NAMES.length)]];
+}
 
 function spawn(width: number, height: number, now: number): Fractal {
   const size = Math.min(width, height) * rand(0.12, 0.25);
-  const generate = GENERATORS[Math.floor(Math.random() * GENERATORS.length)];
+  const generate = pickGenerator();
+
+  const x = rand(size, width - size);
+  const y = rand(size, height - size);
 
   return {
-    segments: generate(rand(size, width - size), rand(size, height - size), size),
+    segments: generate(x, y, size),
+    emoji:
+      generate === cat
+        ? {
+            glyph: CAT_EMOJIS[Math.floor(Math.random() * CAT_EMOJIS.length)],
+            x,
+            y,
+            size: size * rand(0.6, 0.9),
+            tilt: rand(-0.25, 0.25),
+          }
+        : undefined,
     // Between the site's primary blue (205) and the container purple (254).
     hue: rand(220, 235),
     born: now,
-    growMs: rand(2500, 4000),
+    growMs: generate === cat ? 600 : rand(2500, 4000),
     holdMs: 1500,
     fadeMs: 2000,
   };
@@ -124,6 +155,23 @@ function draw(ctx: CanvasRenderingContext2D, fractal: Fractal, now: number) {
   const progress = Math.min(age / fractal.growMs, 1);
   const fadeStart = fractal.growMs + fractal.holdMs;
   const alpha = age < fadeStart ? MAX_ALPHA : MAX_ALPHA * (1 - (age - fadeStart) / fractal.fadeMs);
+
+  if (fractal.emoji) {
+    const { glyph, x, y, size, tilt } = fractal.emoji;
+    // Pop in with a little overshoot, then sit still until the fade.
+    const scale = progress < 1 ? 0.6 + 0.5 * Math.sin(progress * Math.PI * 0.6) : 1;
+    ctx.save();
+    ctx.globalAlpha = Math.max(alpha, 0) * 1.6;
+    ctx.translate(x, y);
+    ctx.rotate(tilt);
+    ctx.scale(scale, scale);
+    ctx.font = `${size}px "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(glyph, 0, 0);
+    ctx.restore();
+    return;
+  }
 
   ctx.strokeStyle = `hsla(${fractal.hue}, 70%, 60%, ${alpha})`;
   ctx.beginPath();
