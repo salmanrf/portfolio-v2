@@ -1,20 +1,21 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500&display=swap");
 
 :root {
-  --title-font: "Source Code Pro", monospace;
-  --content-font: "Ubuntu", sans-serif;
-  --container-bg-color: hsl(254, 25%, 10%, 85%);
-  --slightly-transparent: hsl(0, 0%, 100%, 85%);
-  --primary-blue: hsl(205, 67%, 48%);
-  --navlink-inactive: hsl(205, 67%, 48%, 60%);
-  --secondary-blue: hsl(205, 70%, 37%);
-  --secondary-blue-transparent: hsl(205, 70%, 37%, 60%);
-  --section-header: hsl(221, 15%, 22%);
-  --section-container: hsl(254, 25%, 10%);
-  --project-container-background: hsl(255, 12%, 13%);
-  --tabbed-content-background: hsl(256, 19%, 11%);
-  --tabbed-content-font-color: hsl(205, 67%, 44%);
+  --title-font: "Fira Code", monospace;
+  --content-font: "Sora", sans-serif;
+  --container-bg-color: hsl(42, 14%, 80%, 92%);
+  --slightly-transparent: hsl(223, 13%, 10%);
+  --on-accent: hsl(0, 0%, 100%);
+  --primary-blue: hsl(229, 72%, 46%);
+  --navlink-inactive: hsl(229, 72%, 46%, 60%);
+  --secondary-blue: hsl(229, 72%, 38%);
+  --secondary-blue-transparent: hsl(229, 72%, 38%, 60%);
+  --section-header: hsl(42, 12%, 72%);
+  --section-container: hsl(44, 18%, 87%);
+  --project-container-background: hsl(44, 18%, 88%);
+  --tabbed-content-background: hsl(42, 13%, 78%);
+  --tabbed-content-font-color: hsl(229, 72%, 42%);
 }
 
 html {
@@ -57,7 +58,7 @@ html,
 body {
   width: 100%;
   min-height: 100%;
-  background: hsl(0, 0%, 16%);
+  background: hsl(42, 14%, 80%);
 }
 
 .App {
@@ -132,7 +133,7 @@ header {
 .hamburger-menu div {
   width: 100%;
   height: 3px;
-  background: white;
+  background: var(--slightly-transparent);
 }
 
 #homepage-container {
@@ -282,7 +283,7 @@ header {
   display: flex;
   align-items: center;
   font-size: 14px;
-  color: var(--slightly-transparent);
+  color: var(--on-accent);
   background: var(--secondary-blue);
   box-shadow: 4px 4px 2px hsl(0, 0%, 0%, 50%);
   transition: all 250ms ease-in-out;
@@ -382,7 +383,7 @@ header {
   margin-top: 10px;
   font-family: var(--content-font);
   font-size: 16px;
-  color: hsl(0, 0%, 100%, 70%);
+  color: hsl(217, 9%, 30%);
   line-height: 135%;
 }
 
@@ -469,7 +470,7 @@ header {
 
 .home-nav-link-active {
   font-size: 18px;
-  color: white;
+  color: var(--primary-blue);
 }
 
 .home-nav-link:hover .home-nav-link-bullet {
@@ -642,7 +643,7 @@ header {
   font-size: 14px;
   font-family: var(--title-font);
   font-weight: 500;
-  color: white;
+  color: var(--slightly-transparent);
   cursor: pointer;
 }
 
