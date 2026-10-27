@@ -120,9 +120,7 @@ function LinkedInCard({ post }: { post: LinkedInPost }) {
           </span>
           <div className="blog-author-text">
             <span className="blog-author-name">{post.author}</span>
-            <span className="blog-author-headline">
-              {post.headline} · {post.date}
-            </span>
+            <span className="blog-author-headline">{post.date}</span>
           </div>
         </div>
         <p className="blog-card-text">{post.text ?? post.excerpt}</p>

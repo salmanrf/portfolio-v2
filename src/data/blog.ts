@@ -27,7 +27,8 @@ export type LinkedInPost = {
   /** Resolved linkedin.com/posts/... URL, shown truncated in the card strip. */
   postUrl: string;
   author: string;
-  headline: string;
+  /** Kept in the cache for reference; not shown on the card. */
+  headline?: string;
   date: string; // ISO date, YYYY-MM-DD
   /** Opening of the post, shown on the card. */
   excerpt: string;
