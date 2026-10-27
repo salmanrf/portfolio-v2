@@ -111,7 +111,7 @@ function spawn(width: number, height: number, now: number): Fractal {
   return {
     segments: generate(rand(size, width - size), rand(size, height - size), size),
     // Between the site's primary blue (205) and the container purple (254).
-    hue: rand(200, 260),
+    hue: rand(220, 235),
     born: now,
     growMs: rand(2500, 4000),
     holdMs: 1500,
