@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Route, NavLink, Routes, Outlet, BrowserRouter } from "react-router-dom";
-import { BlogPage, Home, Projects } from "./pages";
+import { BlogPage, BlogPost, Home, Projects } from "./pages";
 import FractalBackground from "./components/FractalBackground";
 
 function Layout() {
@@ -43,6 +43,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/projects" element={<Projects />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Route>
       </Routes>
     </BrowserRouter>
