@@ -60,42 +60,35 @@ function ProjectContainer(props: { project: ProjectDetails }) {
 
   return (
     <div className="project-container">
-      {project.previewImage ? (
+      {project.previewImage && (
         <div className="project-preview">
           <img src={project.previewImage} alt="" />
-          <div className="project-links-flex">
-            {project.liveLink && (
+          {project.liveLink && (
+            <div className="project-links-flex">
               <a className="project-link" href={project.liveLink} target="_blank">
                 <BsFillEyeFill />
                 <span>Live Site</span>
               </a>
-            )}
-            {project.sourceLink && (
-              <a className="project-link" href={project.sourceLink} target="_blank">
-                <SiGithub />
-                <span>Source Code</span>
-              </a>
-            )}
-          </div>
+            </div>
+          )}
         </div>
-      ) : (
-        project.sourceLink && (
-          <div className="project-links-row">
+      )}
+      <div className={`project-information ${project.previewImage ? "" : "project-information-full"}`}>
+        <div className="project-header">
+          {project.liveLink ? (
+            <a href={project.liveLink} target="_blank" className="project-title">
+              {project.title}
+            </a>
+          ) : (
+            <span className="project-title">{project.title}</span>
+          )}
+          {project.sourceLink && (
             <a className="project-link" href={project.sourceLink} target="_blank">
               <SiGithub />
               <span>Source Code</span>
             </a>
-          </div>
-        )
-      )}
-      <div className="project-information">
-        {project.liveLink ? (
-          <a href={project.liveLink} target="_blank" className="project-title">
-            {project.title}
-          </a>
-        ) : (
-          <span className="project-title">{project.title}</span>
-        )}
+          )}
+        </div>
         <div className="tab-container">
           <nav className="tab-navigation">
             <div

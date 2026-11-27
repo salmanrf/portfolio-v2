@@ -62,6 +62,21 @@ export const projectData: ProjectData = [
           "POSIX threads",
         ],
       },
+      {
+        title: "xv6",
+        description: `Kernel work on xv6, the teaching operating system from MIT. Currently implementing a lottery scheduler and a memory allocator.`,
+        liveLink: null,
+        features: [
+          "Lottery scheduler: processes hold tickets, and each time slice a random draw picks who runs",
+          "settickets and getpinfo system calls, with children inheriting their parent's ticket count",
+          "A memory allocator for the kernel",
+        ],
+        technologies: [
+          "C",
+          "RISC-V",
+          "xv6",
+        ],
+      },
     ]
   },
   {
