@@ -574,6 +574,12 @@ header {
   transform: translate(-50%, -25%);
 }
 
+.project-links-row {
+  display: flex;
+  align-items: center;
+  padding: 15px 15px 0;
+}
+
 .project-link {
   margin: 0 5px;
   margin-bottom: 5px;

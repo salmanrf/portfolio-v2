@@ -46,36 +46,22 @@ export const projectData: ProjectData = [
       },
       {
         title: "OSTEP Projects",
-        description: `My solutions to the projects from Operating Systems: Three Easy Pieces. Unix utilities, a shell, concurrency, and file systems in C, plus kernel work inside xv6.`,
+        description: `My solutions to the projects from Operating Systems: Three Easy Pieces. Unix utilities, a shell, concurrency, and file systems in C.`,
         liveLink: null,
         sourceLink: "https://github.com/salmanrf/ostep-projects",
         features: [
           "Unix utilities, a shell with redirection and parallel commands, and a reverse program",
-          "A concurrent web server (thread pool and event loop), parallel zip, and MapReduce",
+          "A concurrent web server with a thread pool and an event loop",
+          "Parallel compression (pzip): a multi-threaded run-length encoder",
+          "A single-machine, multi-threaded MapReduce implementation",
           "A file system checker",
         ],
         technologies: [
           "C",
           "Linux",
           "POSIX threads",
-          "xv6",
         ],
       },
-      {
-        title: "xv6",
-        description: `Kernel work on xv6, the teaching operating system from MIT. Currently implementing a lottery scheduler and a memory allocator.`,
-        liveLink: null,
-        features: [
-          "Lottery scheduler: processes hold tickets, and each time slice a random draw picks who runs",
-          "settickets and getpinfo system calls, with children inheriting their parent's ticket count",
-          "A memory allocator for the kernel",
-        ],
-        technologies: [
-          "C",
-          "RISC-V",
-          "xv6",
-        ],
-      }
     ]
   },
   {

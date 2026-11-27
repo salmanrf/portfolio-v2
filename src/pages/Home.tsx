@@ -114,6 +114,22 @@ function About(props: SectionProps) {
 
   const yoe = ((Date.now() - new Date("2021-09-21").getTime()) / (60_000 * 60 * 24 * 365)).toFixed(1);
 
+  // Whole months between two dates, counting a started month. An open end date means today.
+  const roleDuration = (start: string, end?: string) => {
+    const from = new Date(start);
+    const to = end ? new Date(end) : new Date();
+    const months = (to.getFullYear() - from.getFullYear()) * 12 + (to.getMonth() - from.getMonth()) + 1;
+    const years = Math.floor(months / 12);
+    const rest = months % 12;
+
+    const parts = [
+      years > 0 ? `${years} yr${years > 1 ? "s" : ""}` : "",
+      rest > 0 ? `${rest} mo${rest > 1 ? "s" : ""}` : "",
+    ].filter(Boolean);
+
+    return parts.join(" ");
+  };
+
   return (
     <div
       className="home-section-container"
@@ -163,15 +179,15 @@ function About(props: SectionProps) {
           <h3>Professional Experience</h3>
           <div className="content-section-item">
             <h4>Gigradar.io - Full-Stack Engineer</h4>
-            <h4>Jan 2025 - Present</h4>
+            <h4>Jan 2025 - Present · {roleDuration("2025-01-01")}</h4>
           </div>
           <div className="content-section-item">
             <h4>Gradient Innovation - Full-Stack Engineer</h4>
-            <h4>Apr 2023 - Dec 2024</h4>
+            <h4>Apr 2023 - Dec 2024 · {roleDuration("2023-04-01", "2024-12-01")}</h4>
           </div>
           <div className="content-section-item">
             <h4>Ozip Teknologi Nusantara - Full-Stack Developer</h4>
-            <h4>Sept 2021 - Jan 2023</h4>
+            <h4>Sept 2021 - Jan 2023 · {roleDuration("2021-09-01", "2023-01-01")}</h4>
           </div>
         </div>
       </div>
