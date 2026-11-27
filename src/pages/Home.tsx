@@ -130,7 +130,7 @@ function About(props: SectionProps) {
         <div className="content-section">
           <h3>Background</h3>
           <p>
-            Hi! I am Salman Rizqi Fatih, a Full-Stack Engineer with {yoe} years of experience from Depok, West Java, Indonesia.
+            Hi! I am Salman Rizqi Fatih, a Full-Stack Engineer with {yoe} years of experience from Jakarta, Indonesia.
           </p>
           <p>
             In 2019, I enrolled in an undergraduate program in Electronics at Jakarta State Polytechnic (PNJ).
@@ -163,7 +163,7 @@ function About(props: SectionProps) {
           <h3>Professional Experience</h3>
           <div className="content-section-item">
             <h4>Gigradar.io - Full-Stack Engineer</h4>
-            <h4>Feb 2025 - Present</h4>
+            <h4>Jan 2025 - Present</h4>
           </div>
           <div className="content-section-item">
             <h4>Gradient Innovation - Full-Stack Engineer</h4>
@@ -226,9 +226,9 @@ function Skills(props: SectionProps) {
         </div>
         <ul>
           <li>Programming Languages: TypeScript, Go, Python, C</li>
-          <li>Environment/Framework: NodeJS</li>
-          <li>Database: MongoDB, PostgreSQL, ElasticSearch</li>
-          <li>API Design: REST API, GraphQL</li>
+          <li>Environment/Framework: NodeJS, NestJS</li>
+          <li>Database: PostgreSQL, MongoDB, Redis, ElasticSearch</li>
+          <li>API Design: REST API, GraphQL, tRPC</li>
         </ul>
         <div className="content-section-item">
           <p>Infrastructure</p>
@@ -251,8 +251,8 @@ function Skills(props: SectionProps) {
         </div>
         <ul>
           <li>Programming Languages: TypeScript, JavaScript</li>
-          <li>Libraries/Framework: React, NextJS, Plasmo Framework</li>
-          <li>State Management: Redux, Zustand</li>
+          <li>Libraries/Framework: React, NextJS, TanStack Router, TanStack Query</li>
+          <li>Styling: Tailwind</li>
         </ul>
       </div>
     </div>

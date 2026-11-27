@@ -71,10 +71,12 @@ function ProjectContainer(props: { project: ProjectDetails }) {
               <span>Live Site</span>
             </a>
           )}
-          <a className="project-link" href={project.sourceLink} target="_blank">
-            <SiGithub />
-            <span>Source Code</span>
-          </a>
+          {project.sourceLink && (
+            <a className="project-link" href={project.sourceLink} target="_blank">
+              <SiGithub />
+              <span>Source Code</span>
+            </a>
+          )}
         </div>
       </div>
       <div className="project-information">
