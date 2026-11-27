@@ -80,21 +80,13 @@ function ProjectContainer(props: { project: ProjectDetails }) {
         </div>
       )}
       <div className={`project-information ${project.previewImage ? "" : "project-information-full"}`}>
-        <div className="project-header">
-          {project.liveLink ? (
-            <a href={project.liveLink} target="_blank" className="project-title">
-              {project.title}
-            </a>
-          ) : (
-            <span className="project-title">{project.title}</span>
-          )}
-          {!project.previewImage && project.sourceLink && (
-            <a className="project-link" href={project.sourceLink} target="_blank">
-              <SiGithub />
-              <span>Source Code</span>
-            </a>
-          )}
-        </div>
+        {project.liveLink ? (
+          <a href={project.liveLink} target="_blank" className="project-title">
+            {project.title}
+          </a>
+        ) : (
+          <span className="project-title">{project.title}</span>
+        )}
         <div className="tab-container">
           <nav className="tab-navigation">
             <div
@@ -140,6 +132,14 @@ function ProjectContainer(props: { project: ProjectDetails }) {
             })()}
           </div>
         </div>
+        {!project.previewImage && project.sourceLink && (
+          <div className="project-links-row">
+            <a className="project-link" href={project.sourceLink} target="_blank">
+              <SiGithub />
+              <span>Source Code</span>
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );

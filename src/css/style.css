@@ -574,22 +574,15 @@ header {
   transform: translate(-50%, -25%);
 }
 
-.project-header {
+.project-links-row {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 15px;
+  margin-top: 20px;
 }
 
-.project-header .project-title {
-  margin-bottom: 0;
-}
-
-.project-header .project-link {
+.project-links-row .project-link {
   margin: 0;
-  margin-bottom: 0;
 }
 
 /* A card with no preview image is all information, so it keeps a real height. */
