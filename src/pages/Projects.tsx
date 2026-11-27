@@ -63,14 +63,20 @@ function ProjectContainer(props: { project: ProjectDetails }) {
       {project.previewImage && (
         <div className="project-preview">
           <img src={project.previewImage} alt="" />
-          {project.liveLink && (
-            <div className="project-links-flex">
+          <div className="project-links-flex">
+            {project.liveLink && (
               <a className="project-link" href={project.liveLink} target="_blank">
                 <BsFillEyeFill />
                 <span>Live Site</span>
               </a>
-            </div>
-          )}
+            )}
+            {project.sourceLink && (
+              <a className="project-link" href={project.sourceLink} target="_blank">
+                <SiGithub />
+                <span>Source Code</span>
+              </a>
+            )}
+          </div>
         </div>
       )}
       <div className={`project-information ${project.previewImage ? "" : "project-information-full"}`}>
@@ -82,7 +88,7 @@ function ProjectContainer(props: { project: ProjectDetails }) {
           ) : (
             <span className="project-title">{project.title}</span>
           )}
-          {project.sourceLink && (
+          {!project.previewImage && project.sourceLink && (
             <a className="project-link" href={project.sourceLink} target="_blank">
               <SiGithub />
               <span>Source Code</span>
