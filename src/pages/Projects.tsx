@@ -60,24 +60,26 @@ function ProjectContainer(props: { project: ProjectDetails }) {
 
   return (
     <div className="project-container">
-      <div className="project-preview">
-        {project.previewImage &&
+      {project.previewImage && (
+        <div className="project-preview">
           <img src={project.previewImage} alt="" />
-        }
-        <div className="project-links-flex">
-          {project.liveLink && (
-            <a className="project-link" href={project.liveLink} target="_blank">
-              <BsFillEyeFill />
-              <span>Live Site</span>
-            </a>
-          )}
-          <a className="project-link" href={project.sourceLink} target="_blank">
-            <SiGithub />
-            <span>Source Code</span>
-          </a>
+          <div className="project-links-flex">
+            {project.liveLink && (
+              <a className="project-link" href={project.liveLink} target="_blank">
+                <BsFillEyeFill />
+                <span>Live Site</span>
+              </a>
+            )}
+            {project.sourceLink && (
+              <a className="project-link" href={project.sourceLink} target="_blank">
+                <SiGithub />
+                <span>Source Code</span>
+              </a>
+            )}
+          </div>
         </div>
-      </div>
-      <div className="project-information">
+      )}
+      <div className={`project-information ${project.previewImage ? "" : "project-information-full"}`}>
         {project.liveLink ? (
           <a href={project.liveLink} target="_blank" className="project-title">
             {project.title}
@@ -130,6 +132,14 @@ function ProjectContainer(props: { project: ProjectDetails }) {
             })()}
           </div>
         </div>
+        {!project.previewImage && project.sourceLink && (
+          <div className="project-links-row">
+            <a className="project-link" href={project.sourceLink} target="_blank">
+              <SiGithub />
+              <span>Source Code</span>
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );

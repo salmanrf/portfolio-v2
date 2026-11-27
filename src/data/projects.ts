@@ -14,38 +14,94 @@ export type ProjectDetails = {
   description: string
   previewImage?: string
   liveLink?: string | null
-  sourceLink: string,
+  sourceLink?: string,
   features: string[],
   technologies: string[]
 }
 
 export const projectData: ProjectData = [
   {
+    year: 2026,
+    projects: [
+      {
+        title: "Slop Control",
+        description: `Slop Control is an AI coding workspace for responsible software engineers: plan, review, test, release, and repeat in a single orchestrator dashboard.`,
+        liveLink: null,
+        sourceLink: "https://github.com/salmanrf/slop-control",
+        features: [
+          "Launches Claude Code sessions against built-in tickets or connected GitHub Issues",
+          "Tracks session status and output live, with results and code diffs available for review",
+          "Drafts pull requests, ticket comments, and status changes for explicit human approval",
+        ],
+        technologies: [
+          "TypeScript",
+          "React",
+          "NestJS",
+          "Claude Agent SDK",
+          "PostgreSQL",
+          "Supabase",
+          "GitHub API",
+          "Docker",
+        ],
+      },
+      {
+        title: "OSTEP Projects",
+        description: `My solutions to the projects from Operating Systems: Three Easy Pieces. Unix utilities, a shell, concurrency, and file systems in C.`,
+        liveLink: null,
+        sourceLink: "https://github.com/salmanrf/ostep-projects",
+        features: [
+          "Unix utilities, a shell with redirection and parallel commands, and a reverse program",
+          "A concurrent web server with a thread pool and an event loop",
+          "Parallel compression (pzip): a multi-threaded run-length encoder",
+          "A single-machine, multi-threaded MapReduce implementation",
+          "A file system checker",
+        ],
+        technologies: [
+          "C",
+          "Linux",
+          "POSIX threads",
+        ],
+      },
+      {
+        title: "xv6",
+        description: `Kernel work on xv6, the teaching operating system from MIT. Currently implementing a lottery scheduler and a memory allocator.`,
+        liveLink: null,
+        features: [
+          "Lottery scheduler: processes hold tickets, and each time slice a random draw picks who runs",
+          "settickets and getpinfo system calls, with children inheriting their parent's ticket count",
+          "A memory allocator for the kernel",
+        ],
+        technologies: [
+          "C",
+          "RISC-V",
+          "xv6",
+        ],
+      },
+    ]
+  },
+  {
     year: 2025,
     projects: [
       {
-        title: "Capybara Cloud",
-        description: `Capybara Cloud is an open source, self-hosted, "Bring your own cloud", AI-assisted Platform as a Service (PaaS) engine.`,
+        title: "Masbro Cloud",
+        description: `Masbro Cloud is an open-source Platform-as-a-Service (PaaS) engine for organizations and self-hosting enthusiasts who want full control of their infrastructure with the ease of a managed platform.`,
         previewImage: capybaraPreview,
         liveLink: null,
         sourceLink: "https://github.com/salmanrf/capybara_cloud",
         features: [
-          "Cloud Space Management",
-          "Deployment Management",
-          "Deployment Monitoring",
-          "Hosts Provisioning",
-          "AI Assist (MCP)"
+          "Organization, project, and application management",
+          "Application deployment: upload source, then extract, build, push, and start a containerized app",
+          "Built with test-driven development, distributed tracing, and a distributed architecture designed for high availability",
         ],
         technologies: [
+          "Nx Monorepo",
           "Go",
-          "TypeScript",
-          "NodeJS",
-          "PostgreSQL",
-          "RabbitMQ",
-          "Auth0",
           "chi",
-          "goose",
-          "sqlc",
+          "PostgreSQL",
+          "Supabase Auth",
+          "Docker",
+          "Caddy",
+          "RabbitMQ",
         ],
       }
     ]

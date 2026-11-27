@@ -79,6 +79,10 @@
     justify-content: center;
   }
 
+  .project-information-full {
+    width: 100%;
+  }
+
   .project-title {
     margin-bottom: 35px;
   }
